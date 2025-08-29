@@ -181,7 +181,7 @@ namespace UIDeskAutomationLib
 				
 				if (fwkid == "WPF")
 				{
-					UIDA_Label label = this.Label();
+					UIDA_Text label = this.Text();
 					if (label != null)
 					{
 						label.Click();
