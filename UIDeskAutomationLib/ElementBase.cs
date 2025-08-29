@@ -385,7 +385,7 @@ namespace UIDeskAutomationLib
 				}
 				else if (controlType == ControlType.Menu)
 				{
-					return new UIDA_TopLevelMenu(parent);
+					return new UIDA_Menu(parent);
 				}
 				else if (controlType == ControlType.MenuBar)
 				{
@@ -429,15 +429,15 @@ namespace UIDeskAutomationLib
 				}
 				else if (controlType == ControlType.Text)
 				{
-					return new UIDA_Label(parent);
+					return new UIDA_Text(parent);
 				}
 				else if (controlType == ControlType.ToolBar)
 				{
-					return new UIDA_Toolbar(parent);
+					return new UIDA_ToolBar(parent);
 				}
 				else if (controlType == ControlType.ToolTip)
 				{
-					return new UIDA_Tooltip(parent);
+					return new UIDA_ToolTip(parent);
 				}
 				else if (controlType == ControlType.Tree)
 				{

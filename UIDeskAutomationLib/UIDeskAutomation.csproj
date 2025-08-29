@@ -54,13 +54,14 @@
     <Compile Include="Controls\Button.cs" />
     <Compile Include="Controls\Calendar.cs" />
     <Compile Include="Controls\CheckBox.cs" />
-    <Compile Include="Controls\Combo.cs" />
+    <Compile Include="Controls\ComboBox.cs" />
     <Compile Include="Controls\Custom.cs" />
     <Compile Include="Controls\DataGrid.cs" />
 	<Compile Include="Controls\DataItem.cs" />
     <Compile Include="Controls\DatePicker.cs" />
     <Compile Include="Controls\Document.cs" />
     <Compile Include="Controls\Edit.cs" />
+    <Compile Include="Controls\Generic.cs" />
     <Compile Include="Controls\Group.cs" />
 	<Compile Include="Controls\Header.cs" />
 	<Compile Include="Controls\HeaderItem.cs" />
@@ -69,8 +70,8 @@
     <Compile Include="Controls\StatusBar.cs" />
     <Compile Include="Controls\Table.cs" />
     <Compile Include="Controls\Thumb.cs" />
-    <Compile Include="Controls\Toolbar.cs" />
-    <Compile Include="Controls\Tooltip.cs" />
+    <Compile Include="Controls\ToolBar.cs" />
+    <Compile Include="Controls\ToolTip.cs" />
     <Compile Include="ElementBase_Actions.cs" />
     <Compile Include="ElementBase_Search.cs" />
     <Compile Include="FrmDummy.cs">
@@ -83,7 +84,7 @@
     <Compile Include="Helper.cs" />
     <Compile Include="Controls\HyperLink.cs" />
     <Compile Include="Controls\Image.cs" />
-    <Compile Include="Controls\Label.cs" />
+    <Compile Include="Controls\Text.cs" />
     <Compile Include="Controls\List.cs" />
     <Compile Include="Controls\ListItem.cs" />
     <Compile Include="Controls\MenuBar.cs" />
@@ -97,9 +98,10 @@
     <Compile Include="Controls\TabCtrl.cs" />
     <Compile Include="Controls\TabItem.cs" />
     <Compile Include="Controls\TitleBar.cs" />
-    <Compile Include="Controls\TopLevelMenu.cs" />
+    <Compile Include="Controls\Menu.cs" />
     <Compile Include="Controls\Tree.cs" />
     <Compile Include="Controls\TreeItem.cs" />
+     <Compile Include="UIDA_Properties.cs" />
     <Compile Include="UnsafeNativeFunctions.cs" />
     <Compile Include="ElementBase.cs" />
     <Compile Include="Engine.cs" />

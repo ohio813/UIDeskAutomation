@@ -617,14 +617,14 @@ namespace UIDeskAutomationLib
         }
 
         /// <summary>
-        /// Searches for a top-level menu among the children of the element or its descendants
+        /// Searches for a menu among the children of the element or its descendants
         /// </summary>
         /// <param name="name">menu name, wildcards can be used</param>
         /// <param name="index">menu index, starts with 1</param>
         /// <param name="searchDescendants">search descendants, default false</param>
         /// <param name="caseSensitive">search name with case sensitive criteria</param>
-        /// <returns>UIDA_TopLevelMenu, null if not found</returns>
-        public UIDA_TopLevelMenu MenuAt(string name, int index, bool searchDescendants = false,
+        /// <returns>UIDA_Menu, null if not found</returns>
+        public UIDA_Menu MenuAt(string name, int index, bool searchDescendants = false,
             bool caseSensitive = true)
         {
             if (index < 0)
@@ -673,18 +673,18 @@ namespace UIDeskAutomationLib
                 }
             }
 
-            UIDA_TopLevelMenu menu = new UIDA_TopLevelMenu(returnElement);
+            UIDA_Menu menu = new UIDA_Menu(returnElement);
             return menu;
         }
 
         /// <summary>
-        /// Searches for a top-level menu among the children of the element or its descendants
+        /// Searches for a menu among the children of the element or its descendants
         /// </summary>
         /// <param name="name">menu text, wildcards can be used</param>
         /// <param name="searchDescendants">search descendants, default false</param>
         /// <param name="caseSensitive">search name with case sensitive criteria</param>
-        /// <returns>first UIDA_TopLevelMenu that matches the search criteria, null if not found</returns>
-        public UIDA_TopLevelMenu Menu(string name = null, bool searchDescendants = false,
+        /// <returns>first UIDA_Menu that matches the search criteria, null if not found</returns>
+        public UIDA_Menu Menu(string name = null, bool searchDescendants = false,
             bool caseSensitive = true)
         {
             AutomationElement returnElement = this.FindFirst(ControlType.Menu, name,
@@ -704,29 +704,29 @@ namespace UIDeskAutomationLib
                 }
             }
 
-            UIDA_TopLevelMenu menu = new UIDA_TopLevelMenu(returnElement);
+            UIDA_Menu menu = new UIDA_Menu(returnElement);
             return menu;
         }
 
         /// <summary>
-        /// Returns a collection of TopLevelMenus that matches the search text (name), wildcards can be used.
+        /// Returns a collection of Menus that matches the search text (name), wildcards can be used.
         /// </summary>
-        /// <param name="name">text of TopLevelMenu elements, use null to return all Menus</param>
+        /// <param name="name">text of Menu elements, use null to return all Menus</param>
         /// <param name="searchDescendants">true is search deep through descendants, false is search through children, default false</param>
         /// <param name="caseSensitive">true if name search is done case sensitive, default true</param>
-        /// <returns>all UIDA_TopLevelMenu elements that match the search criteria</returns>
-        public UIDA_TopLevelMenu[] Menus(string name = null, bool searchDescendants = false,
+        /// <returns>all UIDA_Menu elements that match the search criteria</returns>
+        public UIDA_Menu[] Menus(string name = null, bool searchDescendants = false,
             bool caseSensitive = true)
         {
             List<AutomationElement> allMenus = FindAll(ControlType.Menu,
                 name, searchDescendants, false, caseSensitive);
 
-            List<UIDA_TopLevelMenu> menus = new List<UIDA_TopLevelMenu>();
+            List<UIDA_Menu> menus = new List<UIDA_Menu>();
             if (allMenus != null)
             {
                 foreach (AutomationElement crtEl in allMenus)
                 {
-                    menus.Add(new UIDA_TopLevelMenu(crtEl));
+                    menus.Add(new UIDA_Menu(crtEl));
                 }
             }
             return menus.ToArray();
@@ -1945,13 +1945,13 @@ namespace UIDeskAutomationLib
         }
 
         /// <summary>
-        /// Searches a Label in the current element
+        /// Searches a static Text in the current element
         /// </summary>
-        /// <param name="name">text of Label, wildcards can be used</param>
+        /// <param name="name">the static text, wildcards can be used</param>
         /// <param name="searchDescendants">true is search deep through descendants, false is search through children, default false</param>
         /// <param name="caseSensitive">true if name search is case sensitive, default true</param>
-        /// <returns>UIDA_Label element, null if not found</returns>
-        public UIDA_Label Label(string name = null, bool searchDescendants = false,
+        /// <returns>UIDA_Text element, null if not found</returns>
+        public UIDA_Text Text(string name = null, bool searchDescendants = false,
             bool caseSensitive = true)
         {
             AutomationElement returnElement = this.FindFirst(ControlType.Text,
@@ -1959,11 +1959,11 @@ namespace UIDeskAutomationLib
 
             if (returnElement == null)
             {
-                Engine.TraceInLogFile("Label method - Label element not found");
+                Engine.TraceInLogFile("Text method - Text element not found");
 
                 if (Engine.ThrowExceptionsWhenSearch == true)
                 {
-                    throw new Exception("Label method - Label element not found");
+                    throw new Exception("Text method - Text element not found");
                 }
                 else
                 {
@@ -1971,28 +1971,28 @@ namespace UIDeskAutomationLib
                 }
             }
 
-            UIDA_Label label = new UIDA_Label(returnElement);
-            return label;
+            UIDA_Text text = new UIDA_Text(returnElement);
+            return text;
         }
 
         /// <summary>
         /// Searches for a Static Text (Label) with a specified text at a specified index.
         /// </summary>
-        /// <param name="name">text of Label, wildcards can be used</param>
-        /// <param name="index">index of Label</param>
+        /// <param name="name">the static text, wildcards can be used</param>
+        /// <param name="index">index of element</param>
         /// <param name="searchDescendants">true if search through descendants, false if search only through children, default false</param>
         /// <param name="caseSensitive">true if name search is done case sensitive, default true</param>
-        /// <returns>UIDA_Label element, null if not found</returns>
-        public UIDA_Label LabelAt(string name, int index, bool searchDescendants = false,
+        /// <returns>UIDA_Text element, null if not found</returns>
+        public UIDA_Text TextAt(string name, int index, bool searchDescendants = false,
             bool caseSensitive = true)
         {
             if (index < 0)
             {
-                Engine.TraceInLogFile("LabelAt method - index cannot be negative");
+                Engine.TraceInLogFile("TextAt method - index cannot be negative");
 
                 if (Engine.ThrowExceptionsWhenSearch == true)
                 {
-                    throw new Exception("LabelAt method - index cannot be negative");
+                    throw new Exception("TextAt method - index cannot be negative");
                 }
                 else
                 {
@@ -2006,11 +2006,11 @@ namespace UIDeskAutomationLib
 
             if (error == Errors.ElementNotFound)
             {
-                Engine.TraceInLogFile("LabelAt method - Label element not found");
+                Engine.TraceInLogFile("TextAt method - Text element not found");
 
                 if (Engine.ThrowExceptionsWhenSearch == true)
                 {
-                    throw new Exception("LabelAt method - Label element not found");
+                    throw new Exception("TextAt method - Text element not found");
                 }
                 else
                 {
@@ -2019,11 +2019,11 @@ namespace UIDeskAutomationLib
             }
             else if (error == Errors.IndexTooBig)
             {
-                Engine.TraceInLogFile("LabelAt method - index too big");
+                Engine.TraceInLogFile("TextAt method - index too big");
 
                 if (Engine.ThrowExceptionsWhenSearch == true)
                 {
-                    throw new Exception("LabelAt method - index too big");
+                    throw new Exception("TextAt method - index too big");
                 }
                 else
                 {
@@ -2031,32 +2031,32 @@ namespace UIDeskAutomationLib
                 }
             }
 
-            UIDA_Label label = new UIDA_Label(returnElement);
-            return label;
+            UIDA_Text text = new UIDA_Text(returnElement);
+            return text;
         }
 
         /// <summary>
-        /// Returns a collection of Labels that matches the search text (name), wildcards can be used.
+        /// Returns a collection of static Texts that matches the search text (name), wildcards can be used.
         /// </summary>
-        /// <param name="name">text of Label elements, use null to return all Labels</param>
+        /// <param name="name">the static text, use null to return all static Texts</param>
         /// <param name="searchDescendants">true is search deep through descendants, false is search through children, default false</param>
         /// <param name="caseSensitive">true if name search is done case sensitive, default true</param>
-        /// <returns>UIDA_Label elements</returns>
-        public UIDA_Label[] Labels(string name = null, bool searchDescendants = false,
+        /// <returns>UIDA_Text elements</returns>
+        public UIDA_Text[] Texts(string name = null, bool searchDescendants = false,
             bool caseSensitive = true)
         {
-            List<AutomationElement> allLabels = FindAll(ControlType.Text,
+            List<AutomationElement> allTexts = FindAll(ControlType.Text,
                 name, searchDescendants, false, caseSensitive);
 
-            List<UIDA_Label> labels = new List<UIDA_Label>();
-            if (allLabels != null)
+            List<UIDA_Text> texts = new List<UIDA_Text>();
+            if (allTexts != null)
             {
-                foreach (AutomationElement crtEl in allLabels)
+                foreach (AutomationElement crtEl in allTexts)
                 {
-                    labels.Add(new UIDA_Label(crtEl));
+                    texts.Add(new UIDA_Text(crtEl));
                 }
             }
-            return labels.ToArray();
+            return texts.ToArray();
         }
 
         /// <summary>
@@ -3964,23 +3964,23 @@ namespace UIDeskAutomationLib
         }
 
         /// <summary>
-        /// Searches for a Toolbar control with a specified text at a specified index.
+        /// Searches for a ToolBar control with a specified text at a specified index.
         /// </summary>
-        /// <param name="name">text or name of Toolbar control, wildcards can be used</param>
-        /// <param name="index">index of Toolbar control</param>
+        /// <param name="name">text or name of ToolBar control, wildcards can be used</param>
+        /// <param name="index">index of ToolBar control</param>
         /// <param name="searchDescendants">true if search through descendants, false if search only through children, default false</param>
         /// <param name="caseSensitive">true if name search is done case sensitive, default true</param>
-        /// <returns>UIDA_Toolbar element, null if not found</returns>
-        public UIDA_Toolbar ToolbarAt(string name, int index, bool searchDescendants = false,
+        /// <returns>UIDA_ToolBar element, null if not found</returns>
+        public UIDA_ToolBar ToolBarAt(string name, int index, bool searchDescendants = false,
             bool caseSensitive = true)
         {
             if (index < 0)
             {
-                Engine.TraceInLogFile("ToolbarAt method - index cannot be negative");
+                Engine.TraceInLogFile("ToolBarAt method - index cannot be negative");
 
                 if (Engine.ThrowExceptionsWhenSearch == true)
                 {
-                    throw new Exception("ToolbarAt method - index cannot be negative");
+                    throw new Exception("ToolBarAt method - index cannot be negative");
                 }
                 else
                 {
@@ -3994,11 +3994,11 @@ namespace UIDeskAutomationLib
 
             if (error == Errors.ElementNotFound)
             {
-                Engine.TraceInLogFile("Toolbar method - Toolbar element not found");
+                Engine.TraceInLogFile("ToolBar method - ToolBar element not found");
 
                 if (Engine.ThrowExceptionsWhenSearch == true)
                 {
-                    throw new Exception("Toolbar method - Toolbar element not found");
+                    throw new Exception("ToolBar method - ToolBar element not found");
                 }
                 else
                 {
@@ -4007,11 +4007,11 @@ namespace UIDeskAutomationLib
             }
             else if (error == Errors.IndexTooBig)
             {
-                Engine.TraceInLogFile("Toolbar method - index too big");
+                Engine.TraceInLogFile("ToolBar method - index too big");
 
                 if (Engine.ThrowExceptionsWhenSearch == true)
                 {
-                    throw new Exception("Toolbar method - index too big");
+                    throw new Exception("ToolBar method - index too big");
                 }
                 else
                 {
@@ -4019,18 +4019,18 @@ namespace UIDeskAutomationLib
                 }
             }
 
-            UIDA_Toolbar toolbar = new UIDA_Toolbar(returnElement);
+            UIDA_ToolBar toolbar = new UIDA_ToolBar(returnElement);
             return toolbar;
         }
 
         /// <summary>
-        /// Searches a Toolbar control in the current element.
+        /// Searches a ToolBar control in the current element.
         /// </summary>
-        /// <param name="name">text or name of Toolbar control, wildcards can be used</param>
+        /// <param name="name">text or name of ToolBar control, wildcards can be used</param>
         /// <param name="searchDescendants">true is search deep through descendants, false is search through children, default false</param>
         /// <param name="caseSensitive">true if name search is case sensitive, default true</param>
-        /// <returns>UIDA_Toolbar element, null if not found</returns>
-        public UIDA_Toolbar Toolbar(string name = null, bool searchDescendants = false,
+        /// <returns>UIDA_ToolBar element, null if not found</returns>
+        public UIDA_ToolBar ToolBar(string name = null, bool searchDescendants = false,
             bool caseSensitive = true)
         {
             AutomationElement returnElement = this.FindFirst(ControlType.ToolBar,
@@ -4038,11 +4038,11 @@ namespace UIDeskAutomationLib
 
             if (returnElement == null)
             {
-                Engine.TraceInLogFile("Toolbar method - Toolbar element not found");
+                Engine.TraceInLogFile("ToolBar method - ToolBar element not found");
 
                 if (Engine.ThrowExceptionsWhenSearch == true)
                 {
-                    throw new Exception("Toolbar method - Toolbar element not found");
+                    throw new Exception("ToolBar method - ToolBar element not found");
                 }
                 else
                 {
@@ -4050,52 +4050,52 @@ namespace UIDeskAutomationLib
                 }
             }
 
-            UIDA_Toolbar toolbar = new UIDA_Toolbar(returnElement);
+            UIDA_ToolBar toolbar = new UIDA_ToolBar(returnElement);
             return toolbar;
         }
 		
 		/// <summary>
-        /// Returns a collection of Toolbars that matches the search text (name), wildcards can be used.
+        /// Returns a collection of ToolBars that matches the search text (name), wildcards can be used.
         /// </summary>
-        /// <param name="name">text of Toolbar elements</param>
+        /// <param name="name">text of ToolBar elements</param>
         /// <param name="searchDescendants">true is search deep through descendants, false is search through children, default false</param>
         /// <param name="caseSensitive">true if name search is done case sensitive, default true</param>
-        /// <returns>UIDA_Toolbar collection</returns>
-        public UIDA_Toolbar[] Toolbars(string name = null, bool searchDescendants = false,
+        /// <returns>UIDA_ToolBar collection</returns>
+        public UIDA_ToolBar[] ToolBars(string name = null, bool searchDescendants = false,
             bool caseSensitive = true)
         {
             List<AutomationElement> allToolbars = FindAll(ControlType.ToolBar,
                 name, searchDescendants, false, caseSensitive);
 
-			List<UIDA_Toolbar> toolbars = new List<UIDA_Toolbar>();
+			List<UIDA_ToolBar> toolbars = new List<UIDA_ToolBar>();
             if (allToolbars != null)
             {
                 foreach (AutomationElement crtEl in allToolbars)
                 {
-                    toolbars.Add(new UIDA_Toolbar(crtEl));
+                    toolbars.Add(new UIDA_ToolBar(crtEl));
                 }
             }
             return toolbars.ToArray();
         }
 
         /// <summary>
-        /// Searches for a Tooltip control with a specified text at a specified index.
+        /// Searches for a ToolTip control with a specified text at a specified index.
         /// </summary>
-        /// <param name="name">text of Tooltip control, wildcards can be used</param>
-        /// <param name="index">index of Tooltip control</param>
+        /// <param name="name">text of ToolTip control, wildcards can be used</param>
+        /// <param name="index">index of ToolTip control</param>
         /// <param name="searchDescendants">true if search through descendants, false if search only through children, default false</param>
         /// <param name="caseSensitive">true if name search is done case sensitive, default true</param>
-        /// <returns>UIDA_Tooltip element, null if not found</returns>
-        public UIDA_Tooltip ToolTipAt(string name, int index, bool searchDescendants = false,
+        /// <returns>UIDA_ToolTip element, null if not found</returns>
+        public UIDA_ToolTip ToolTipAt(string name, int index, bool searchDescendants = false,
             bool caseSensitive = true)
         {
             if (index < 0)
             {
-                Engine.TraceInLogFile("TooltipAt method - index cannot be negative");
+                Engine.TraceInLogFile("ToolTipAt method - index cannot be negative");
 
                 if (Engine.ThrowExceptionsWhenSearch == true)
                 {
-                    throw new Exception("TooltipAt method - index cannot be negative");
+                    throw new Exception("ToolTipAt method - index cannot be negative");
                 }
                 else
                 {
@@ -4109,11 +4109,11 @@ namespace UIDeskAutomationLib
 
             if (error == Errors.ElementNotFound)
             {
-                Engine.TraceInLogFile("Tooltip method - Tooltip element not found");
+                Engine.TraceInLogFile("ToolTipAt method - ToolTip element not found");
 
                 if (Engine.ThrowExceptionsWhenSearch == true)
                 {
-                    throw new Exception("Tooltip method - Tooltip element not found");
+                    throw new Exception("ToolTipAt method - ToolTip element not found");
                 }
                 else
                 {
@@ -4122,11 +4122,11 @@ namespace UIDeskAutomationLib
             }
             else if (error == Errors.IndexTooBig)
             {
-                Engine.TraceInLogFile("Tooltip method - index too big");
+                Engine.TraceInLogFile("ToolTipAt method - index too big");
 
                 if (Engine.ThrowExceptionsWhenSearch == true)
                 {
-                    throw new Exception("Tooltip method - index too big");
+                    throw new Exception("ToolTipAt method - index too big");
                 }
                 else
                 {
@@ -4134,18 +4134,18 @@ namespace UIDeskAutomationLib
                 }
             }
 
-            UIDA_Tooltip tooltip = new UIDA_Tooltip(returnElement);
+            UIDA_ToolTip tooltip = new UIDA_ToolTip(returnElement);
             return tooltip;
         }
 
         /// <summary>
-        /// Searches a Tooltip control in the current element.
+        /// Searches a ToolTip control in the current element.
         /// </summary>
-        /// <param name="name">text of Tooltip control, wildcards can be used</param>
+        /// <param name="name">text of ToolTip control, wildcards can be used</param>
         /// <param name="searchDescendants">true is search deep through descendants, false is search through children, default false</param>
         /// <param name="caseSensitive">true if name search is case sensitive, default true</param>
-        /// <returns>UIDA_Tooltip element, null if not found</returns>
-        public UIDA_Tooltip ToolTip(string name = null, bool searchDescendants = false,
+        /// <returns>UIDA_ToolTip element, null if not found</returns>
+        public UIDA_ToolTip ToolTip(string name = null, bool searchDescendants = false,
             bool caseSensitive = true)
         {
             AutomationElement returnElement = this.FindFirst(ControlType.ToolTip,
@@ -4153,11 +4153,11 @@ namespace UIDeskAutomationLib
 
             if (returnElement == null)
             {
-                Engine.TraceInLogFile("Tooltip method - Tooltip element not found");
+                Engine.TraceInLogFile("ToolTip method - ToolTip element not found");
 
                 if (Engine.ThrowExceptionsWhenSearch == true)
                 {
-                    throw new Exception("Tooltip method - Tooltip element not found");
+                    throw new Exception("ToolTip method - ToolTip element not found");
                 }
                 else
                 {
@@ -4165,29 +4165,29 @@ namespace UIDeskAutomationLib
                 }
             }
 
-            UIDA_Tooltip tooltip = new UIDA_Tooltip(returnElement);
+            UIDA_ToolTip tooltip = new UIDA_ToolTip(returnElement);
             return tooltip;
         }
 		
 		/// <summary>
-        /// Returns a collection of Tooltips that matches the search text (name), wildcards can be used.
+        /// Returns a collection of ToolTips that matches the search text (name), wildcards can be used.
         /// </summary>
-        /// <param name="name">text of Tooltip elements</param>
+        /// <param name="name">text of ToolTip elements</param>
         /// <param name="searchDescendants">true is search deep through descendants, false is search through children, default false</param>
         /// <param name="caseSensitive">true if name search is done case sensitive, default true</param>
-        /// <returns>UIDA_Tooltip collection</returns>
-        public UIDA_Tooltip[] Tooltips(string name = null, bool searchDescendants = false,
+        /// <returns>UIDA_ToolTip collection</returns>
+        public UIDA_ToolTip[] ToolTips(string name = null, bool searchDescendants = false,
             bool caseSensitive = true)
         {
             List<AutomationElement> allTooltips = FindAll(ControlType.ToolTip,
                 name, searchDescendants, false, caseSensitive);
 
-			List<UIDA_Tooltip> tooltips = new List<UIDA_Tooltip>();
+			List<UIDA_ToolTip> tooltips = new List<UIDA_ToolTip>();
             if (allTooltips != null)
             {
                 foreach (AutomationElement crtEl in allTooltips)
                 {
-                    tooltips.Add(new UIDA_Tooltip(crtEl));
+                    tooltips.Add(new UIDA_ToolTip(crtEl));
                 }
             }
             return tooltips.ToArray();
