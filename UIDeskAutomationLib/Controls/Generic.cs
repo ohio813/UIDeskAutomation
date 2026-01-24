@@ -27,6 +27,11 @@ namespace UIDeskAutomationLib
         {
             return new UIDA_CheckBox(uiElement);
         }
+		
+		public UIDA_ComboBox AsComboBox()
+        {
+            return new UIDA_ComboBox(uiElement);
+        }
 
         public UIDA_Custom AsCustom()
         {
